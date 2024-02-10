@@ -17,9 +17,17 @@
 </head>
 
 <body>
-    <video autoplay loop id="indexVideo">
-        <source src="https://res.cloudinary.com/dqqtpvsau/video/upload/v1707577139/samples/cld-sample-video.mp4" type="video/mp4">
+    <video autoplay muted loop id="indexVideo">
+        <source autoplay src="https://res.cloudinary.com/dqqtpvsau/video/upload/v1707577139/samples/cld-sample-video.mp4" type="video/mp4">
     </video>
 </body>
 
+<script>
+    var video = document.getElementById("indexVideo");
+    function myFunction() {
+      if (video.paused) {
+        video.play();
+      }
+    }
+    </script>
 </html>
