@@ -50,11 +50,19 @@
             font-size: 3rem;
             line-height: 3rem;
         }
+
+        /* Responsive Design */
+        @media only screen and (max-width: 600px) {
+            .content {
+                font-size: 1.5rem;
+                line-height: 1.5rem;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <video autoplay muted loop id="indexVideo">
+    <video autoplay muted loop preload="yes" poster="https://github.com/victorlin12345/victorlin12345.github.io/raw/master/mobile-cover.png" id="indexVideo">
         <source src="https://github.com/victorlin12345/victorlin12345.github.io/raw/master/sparks.mp4" type="video/mp4">
     </video>
     <div class="content">
