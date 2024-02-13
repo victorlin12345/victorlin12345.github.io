@@ -11,11 +11,19 @@
             min-height: 100vh;
         }
 
-        body{
+        body {
             margin: 0;
             padding: 0;
             position: relative;
             overflow: hidden;
+        }
+
+        html {
+            background: url(images/bg.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
         }
 
         body::after {
@@ -29,6 +37,7 @@
             background-color: rgba(0, 0, 0, 0.6);
             z-index: 100;
         }
+
         .content {
             position: absolute;
             top: 50%;
@@ -41,11 +50,11 @@
             transition-duration: .5s;
         }
 
-        .content *{
+        .content * {
             margin: 0;
             line-height: 1;
         }
-       
+
         .content:hover {
             font-size: 3rem;
             line-height: 3rem;
@@ -62,17 +71,21 @@
 </head>
 
 <body>
-    <video autoplay muted loop playsinline poster="https://github.com/victorlin12345/victorlin12345.github.io/raw/master/mobile-cover.png" id="indexVideo">
-        <source src="https://res.cloudinary.com/dqqtpvsau/video/upload/v1707577134/samples/sea-turtle.mp4" type="video/mp4">
-        <source src="https://github.com/victorlin12345/victorlin12345.github.io/raw/master/sparks.webm" type="video/webm">
+    <video autoplay muted loop playsinline
+        poster="https://github.com/victorlin12345/victorlin12345.github.io/raw/master/mobile-cover.png" id="indexVideo">
+        <source src="https://res.cloudinary.com/dqqtpvsau/video/upload/v1707577134/samples/sea-turtle.mp4"
+            type="video/mp4">
+        <source src="https://github.com/victorlin12345/victorlin12345.github.io/raw/master/sparks.webm"
+            type="video/webm">
         <source src="https://github.com/victorlin12345/victorlin12345.github.io/raw/master/sparks.mov" type="video/mov">
     </video>
     <div class="content">
         <h1>SPARKS</h1>
         <p>2024 to be continue</p>
-        <audio style="margin: 1rem;" controls src="https://github.com/victorlin12345/victorlin12345.github.io/raw/master/audio2.mp3"></audio>
+        <audio style="margin: 1rem;" controls
+            src="https://github.com/victorlin12345/victorlin12345.github.io/raw/master/audio2.mp3"></audio>
     </div>
-   
+
 </body>
 
 <script>
