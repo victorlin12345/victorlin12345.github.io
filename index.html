@@ -33,6 +33,10 @@
         }
 
         .content {
+            display: flex; /* Add this line to enable flexbox */
+            flex-direction: column; /* Set flex direction to column */
+            justify-content: center; /* Vertically center the content */
+            align-items: center; /* Horizontally center the content */
             position: absolute;
             top: 50%;
             left: 50%;
@@ -42,11 +46,6 @@
             color: white;
             font-size: 2rem;
             transition-duration: .5s;
-        }
-
-        .content * {
-            margin: 0;
-            line-height: 1;
         }
 
         .content:hover {
@@ -60,6 +59,11 @@
                 font-size: 1.5rem;
                 line-height: 1.5rem;
             }
+        }
+
+        .content * {
+            margin: 0;
+            line-height: 1;
         }
     </style>
 </head>
@@ -76,8 +80,10 @@
     <div class="content">
         <h1>SPARKS</h1>
         <p>2024 to be continue</p>
+        
         <audio style="margin: 1rem;" controls
             src="https://github.com/victorlin12345/victorlin12345.github.io/raw/master/audio2.mp3"></audio>
+        <a href="/detail.html" style="margin: 1rem; color: white;">Detail</a>
     </div>
 
 </body>
