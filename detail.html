@@ -3,9 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Falcon</title>
+    <link rel="stylesheet" href="detail/style.css">
+    <script async src="https://unpkg.com/es-modules-shims@1.6.3/dist/es-modules-shims.js">
+    </script>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.153.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.153.0/examples/jsm/"
+            }
+        }
+    </script>
 </head>
 <body>
-    <h1>Detail Page</h1>
+    <div id="heading">
+        <h1>Falcon</h1>
+        <div class="border"></div>
+    </div>
+    <script type="module" src="detail/script.js"></script>
 </body>
 </html>
