@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        .music-block {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 15vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .music-block audio {
+            position: absolute;
+            top: 25%;
+        }
+
+        .video-block {
+            position: relative;
+            padding-top: 15vh;
+            padding-inline: 3rem;
+            display: flex;
+            flex-direction: column;
+            /* background-color: rgba(233, 144, 144, 0.5); */
+            overflow: hidden;
+        }
+
+        .video-block-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .video-block-intro {
+            padding-inline-start: 0.15rem;
+            position: relative;
+            color: black;
+        }
+
+        .video-block-intro h1 {
+            font-weight: bold;
+            font-size: 2rem;
+            margin-block: 1rem;
+        }
+
+        .video-block-intro-3d {
+            position: absolute;
+            left: 50%;
+            top: -15%;
+            width: 40%;
+            aspect-ratio: 1;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .video-block-video-block {
+            position: relative;
+            padding-top: 2.5rem;
+            padding-bottom: 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-block-video-block video {
+            width: 100%;
+            aspect-ratio: 1.58;
+            object-fit: cover; /* Add object-fit property to cover the entire container */
+            border-radius: 20px; /* Add border-radius property for rounded corners */
+        }
+
+        .article-block {
+
+            display: flex;
+            padding: 10%;
+            flex-direction: column; /* Add this line to vertically align the inner elements */
+        }
+
+
+        .article-block-word {
+
+
+            &+& {
+                position: relative;
+                margin-top: 2rem;
+            }
+
+            &+&::before {
+                top: -1rem;
+                position: absolute;
+                display: block;
+                content: "";
+                width: 10%;
+                height: 1px;
+                background-color: #000;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="music-block">
+        <audio controls src="https://github.com/victorlin12345/victorlin12345.github.io/raw/master/audio2.mp3"></audio>
+    </div>
+    <article>
+        <section class="video-block">
+            <img class="video-block-background" src="background.png"
+            srcset="background.png 500w, background.png 1000w, background.png 1500w" />
+        <div class="video-block-intro">
+            <div class="video-block-intro-content">
+                <h1>市場</h1>
+                <p>THE WARMTH<br/>DEDICATED TO<br/>THE EARLY<br/>HOURS OF DAWN</p>
+            </div>
+            <div class="video-block-intro-3d">
+            </div>
+        </div>
+        <div class="video-block-video-block">
+            <video>
+                <source src="https://res.cloudinary.com/dqqtpvsau/video/upload/v1707577134/samples/sea-turtle.mp4"
+                    type="video/mp4">>
+            </video>
+        </div>
+        </section>
+        <section class="article-block">
+            <div class="article-block-word">
+                <p>在這個繁忙的城市，市場承載著生活的起伏， 而在清晨的時光裡，它展現出一種凌晨限定的溫暖。</p> 
+                <p>夜未完全褪去，市場早已喚醒。 橙色的陽光透過市場的招牌， 輕輕灑在擺滿各色食材的攤位上。 清新的空氣中彌漫著新鮮蔬果的香氣， 彷彿是一場大自然的綻放。  攤販們早早來到這片熟悉的場所， 他們的笑容在晨光中顯得格外燦爛。 老闆娘熱情地和顧客攀談 彼此間的交流讓整個市場充滿了溫馨和親切。</p>
+            </div>
+            <div class="article-block-word">
+                <p>In this bustling city, the market carries the ebb and flow of life, revealing a kind of dawn-limited warmth in the early morning.
+                    Before the night completely fades away, the market is already awake. The orange sunlight gently sprinkles through the market's signs, casting a soft glow on stalls filled with various ingredients. The fresh air is filled with the aroma of crisp fruits and vegetables, resembling a blossoming scene from nature.
+                    Vendors arrive early at this familiar place, their smiles shining brightly in the morning light. The market's proprietress engages warmly with customers, creating an atmosphere full of warmth and friendliness.</p>
+            </div>
+        </section>
+    </article>
+
+</body>
+
+</html>
