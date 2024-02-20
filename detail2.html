@@ -27,6 +27,7 @@
         .music-block audio {
             position: absolute;
             top: 30%;
+            z-index: 10;
         }
 
         .video-block {
@@ -169,7 +170,7 @@
                 </div>
             </div>
             <div class="video-block-video-block">
-                <video autoplay muted loop id="indexVideo">
+                <video autoplay muted loop playsinline id="indexVideo">
                     <source src="https://res.cloudinary.com/dqqtpvsau/video/upload/v1707577134/samples/sea-turtle.mp4"
                         type="video/mp4">
                 </video>
