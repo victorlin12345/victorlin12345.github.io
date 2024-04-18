@@ -3,7 +3,7 @@ import PostList from './components/PostList'
 import MainHeader from './components/MainHeader'
 
 function App() {
-  const [modalIsVisable, setVisableModel] = useState(true);
+  const [modalIsVisable, setVisableModel] = useState(false);
 
   function openModalHandler() {
     setVisableModel(true);
