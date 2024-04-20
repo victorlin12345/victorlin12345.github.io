@@ -5,29 +5,32 @@ import Modal from "./Modal";
 import classes from './PostList.module.css';
 
 function PostList({isPosting, onClosePost}) {
-    const [enteredBody, setEnteredBody] = useState("");
-    const [enteredAuthor, setEnteredAuthor] = useState("");
+    const [posts, setPosts] = useState([])
 
-    function bodyChangeHandler(event) {
-        setEnteredBody(event.target.value);
+    function addPostHandler(postData) {
+        console.log(postData);
+        {/* 如果是 new status 是 base on old status，需要用 function 
+        因為 status 更新是非同步的，如果直接用 [postData, ...posts] 會有問題
+        給一個 function 參數，這個 function 會接收到最新的 status
+        prevPosts 是之前的 snapshot
+        */}
+        setPosts((prevPosts) => {
+            return [postData, ...prevPosts]
+        });
     }
-
-    function authorChangeHandler(event) {
-        setEnteredAuthor(event.target.value);
-    }
-
     return (
         <>
             {isPosting && <Modal onClose={onClosePost}>
                 <NewPost
-                    onBodyChange={bodyChangeHandler}
-                    onAuthorChange={authorChangeHandler}
+                    onCancel={onClosePost}
+                    onSubmit={addPostHandler}
                 />
             </Modal>}
 
             <ul className={classes.posts}>
-                <Post author={enteredAuthor} body={enteredBody} />
-                <Post author="Shirley" body="This is my second post" />
+                {posts.map((post, index) => (
+                    <Post key={index} body={post.body} author={post.author} />
+                ))}
             </ul>
         </>
     );
