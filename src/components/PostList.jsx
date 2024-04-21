@@ -4,7 +4,7 @@ import NewPost from "./NewPost";
 import Modal from "./Modal";
 import classes from './PostList.module.css';
 
-function PostList({isPosting, onClosePost}) {
+function PostList({ isPosting, onClosePost }) {
     const [posts, setPosts] = useState([])
 
     function addPostHandler(postData) {
@@ -26,12 +26,17 @@ function PostList({isPosting, onClosePost}) {
                     onSubmit={addPostHandler}
                 />
             </Modal>}
-
-            <ul className={classes.posts}>
-                {posts.map((post, index) => (
-                    <Post key={index} body={post.body} author={post.author} />
-                ))}
-            </ul>
+            {posts.length > 0 && (
+                <ul className={classes.posts}>
+                    {posts.map((post, index) => (
+                        <Post key={index} body={post.body} author={post.author} />
+                    ))}
+                </ul>
+            )}
+            {posts.length === 0 && (
+                <h2 style={{textAlign: 'center'}}>No posts yet. Would you like to add one?</h2>
+            )
+            }
         </>
     );
 }
