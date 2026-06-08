@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mv /Users/victorlin/Documents/project/paoyee/plan.md /tmp/plan.md)",
+      "Bash(npx create-next-app@latest /Users/victorlin/Documents/project/paoyee --typescript --tailwind --eslint --app --no-src-dir --import-alias \"@/*\" --yes)",
+      "Bash(mv /tmp/plan.md /Users/victorlin/Documents/project/paoyee/plan.md)",
+      "Bash(npm install *)"
+    ]
+  }
+}
