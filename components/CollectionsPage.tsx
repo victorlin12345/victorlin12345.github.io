@@ -303,7 +303,7 @@ function LeadPiece({ watch, onInquire }: { watch: Watch; onInquire: () => void }
   const { t, lang } = useLanguage();
 
   return (
-    <section className="border-t border-[#2C2C2E] py-28 px-6 lg:px-12">
+    <section id="watches" className="border-t border-[#2C2C2E] py-28 px-6 lg:px-12">
       <div className="max-w-7xl mx-auto">
         <p className="text-[#8E8E93] text-[10px] tracking-[0.4em] uppercase mb-20">
           {t("col.lead.eyebrow")}

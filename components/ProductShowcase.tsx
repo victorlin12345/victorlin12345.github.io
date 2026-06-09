@@ -1,9 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Watch {
   id: number;
+  inventoryId: string | null;
   brand: string;
   model: string;
   ref: string;
@@ -19,6 +21,7 @@ interface Watch {
 const WATCHES: Watch[] = [
   {
     id: 1,
+    inventoryId: "daytona",
     brand: "ROLEX",
     model: "Cosmograph Daytona",
     ref: "Ref. 116500LN",
@@ -31,6 +34,7 @@ const WATCHES: Watch[] = [
   },
   {
     id: 2,
+    inventoryId: "pp5726",
     brand: "PATEK PHILIPPE",
     model: "Nautilus",
     ref: "Ref. 5711/1A-014",
@@ -43,6 +47,7 @@ const WATCHES: Watch[] = [
   },
   {
     id: 3,
+    inventoryId: "ap-roa",
     brand: "AUDEMARS PIGUET",
     model: "Royal Oak",
     ref: "Ref. 15202ST",
@@ -55,6 +60,7 @@ const WATCHES: Watch[] = [
   },
   {
     id: 4,
+    inventoryId: null,
     brand: "RICHARD MILLE",
     model: "RM 011 Felipe Massa",
     ref: "Ref. RM011-FM",
@@ -68,6 +74,7 @@ const WATCHES: Watch[] = [
   },
   {
     id: 5,
+    inventoryId: "lange-dato",
     brand: "A. LANGE & SÖHNE",
     model: "Datograph Perpetual",
     ref: "Ref. 401.026",
@@ -80,6 +87,7 @@ const WATCHES: Watch[] = [
   },
   {
     id: 6,
+    inventoryId: "vc-pat",
     brand: "VACHERON CONSTANTIN",
     model: "Overseas Chronograph",
     ref: "Ref. 5500V/110A",
@@ -92,6 +100,7 @@ const WATCHES: Watch[] = [
   },
   {
     id: 7,
+    inventoryId: "fpj-blue",
     brand: "F.P. JOURNE",
     model: "Chronomètre Bleu",
     ref: "Ref. CB TN",
@@ -105,6 +114,7 @@ const WATCHES: Watch[] = [
   },
   {
     id: 8,
+    inventoryId: null,
     brand: "H. MOSER & CIE",
     model: "Endeavour Perpetual",
     ref: "Ref. 1341-0001",
@@ -195,47 +205,58 @@ export default function ProductShowcase({ onInquire }: ProductShowcaseProps) {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#2C2C2E]">
-          {WATCHES.map((watch) => (
-            <article key={watch.id} className="group bg-[#161616] cursor-pointer">
-              <div className="relative aspect-[3/4] overflow-hidden">
-                <div className="absolute inset-0 transition-opacity duration-700 group-hover:opacity-0" style={{ background: watch.frontGradient }}>
-                  <WatchFaceFront accentColor={watch.accentColor} />
-                </div>
-                <div className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100" style={{ background: watch.backGradient }}>
-                  <WatchMovementBack accentColor={watch.accentColor} />
-                  <div className="absolute bottom-4 left-0 right-0 flex justify-center">
-                    <span className="text-[8px] tracking-[0.3em] uppercase px-3 py-1 border border-white/10" style={{ color: `${watch.accentColor}60` }}>
-                      {t("showcase.movement")}
-                    </span>
+          {WATCHES.map((watch) => {
+            const cardClass = "group bg-[#161616] cursor-pointer block";
+            const content = (
+              <>
+                <div className="relative aspect-[3/4] overflow-hidden">
+                  <div className="absolute inset-0 transition-opacity duration-700 group-hover:opacity-0" style={{ background: watch.frontGradient }}>
+                    <WatchFaceFront accentColor={watch.accentColor} />
+                  </div>
+                  <div className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100" style={{ background: watch.backGradient }}>
+                    <WatchMovementBack accentColor={watch.accentColor} />
+                    <div className="absolute bottom-4 left-0 right-0 flex justify-center">
+                      <span className="text-[8px] tracking-[0.3em] uppercase px-3 py-1 border border-white/10" style={{ color: `${watch.accentColor}60` }}>
+                        {t("showcase.movement")}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              <div className="p-5 border-t border-[#2C2C2E]">
-                <p className="text-[9px] tracking-[0.3em] uppercase mb-1 font-medium" style={{ color: watch.accentColor + "90" }}>
-                  {watch.brand}
-                </p>
-                <h3 className="text-white text-sm font-light mb-1 leading-snug">{watch.model}</h3>
-                <p className="text-[#8E8E93] text-[10px] tracking-wide mb-3">{watch.ref}</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-[#8E8E93] text-[9px] tracking-[0.15em] uppercase">
-                    {t(watch.conditionKey)} · {watch.year}
-                  </span>
+                <div className="p-5 border-t border-[#2C2C2E]">
+                  <p className="text-[9px] tracking-[0.3em] uppercase mb-1 font-medium" style={{ color: watch.accentColor + "90" }}>
+                    {watch.brand}
+                  </p>
+                  <h3 className="text-white text-sm font-light mb-1 leading-snug">{watch.model}</h3>
+                  <p className="text-[#8E8E93] text-[10px] tracking-wide mb-3">{watch.ref}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[#8E8E93] text-[9px] tracking-[0.15em] uppercase">
+                      {t(watch.conditionKey)} · {watch.year}
+                    </span>
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-[#2C2C2E] flex items-center justify-between">
+                    <span className="text-white text-sm font-light tracking-wide">
+                      {watch.isPriceInquiry ? t("showcase.inquirePrice") : watch.priceDisplay}
+                    </span>
+                    <button
+                      onClick={(e) => { e.preventDefault(); onInquire(`${watch.brand} — ${watch.model} (${watch.ref})`); }}
+                      className="text-[8px] tracking-[0.25em] uppercase text-[#8E8E93] hover:text-white border border-[#2C2C2E] hover:border-white/30 px-3 py-1.5 transition-all duration-300"
+                    >
+                      {t("showcase.inquire")}
+                    </button>
+                  </div>
                 </div>
-                <div className="mt-4 pt-4 border-t border-[#2C2C2E] flex items-center justify-between">
-                  <span className="text-white text-sm font-light tracking-wide">
-                    {watch.isPriceInquiry ? t("showcase.inquirePrice") : watch.priceDisplay}
-                  </span>
-                  <button
-                    onClick={() => onInquire(`${watch.brand} — ${watch.model} (${watch.ref})`)}
-                    className="text-[8px] tracking-[0.25em] uppercase text-[#8E8E93] hover:text-white border border-[#2C2C2E] hover:border-white/30 px-3 py-1.5 transition-all duration-300"
-                  >
-                    {t("showcase.inquire")}
-                  </button>
-                </div>
-              </div>
-            </article>
-          ))}
+              </>
+            );
+            return watch.inventoryId ? (
+              <Link key={watch.id} href={`/discover/${watch.inventoryId}`} className={cardClass}>
+                {content}
+              </Link>
+            ) : (
+              <article key={watch.id} className={cardClass}>
+                {content}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { LanguageProvider, useLanguage } from "@/contexts/LanguageContext";
-import { ThemeProvider } from "@/contexts/ThemeContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import Navbar from "@/components/Navbar";
 import DiscoverPage from "@/components/DiscoverPage";
 import BookingModal from "@/components/BookingModal";
@@ -40,11 +39,5 @@ function PageContent() {
 }
 
 export default function Discover() {
-  return (
-    <ThemeProvider>
-      <LanguageProvider>
-        <PageContent />
-      </LanguageProvider>
-    </ThemeProvider>
-  );
+  return <PageContent />;
 }

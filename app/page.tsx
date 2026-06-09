@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { LanguageProvider } from "@/contexts/LanguageContext";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { ThemeProvider } from "@/contexts/ThemeContext";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import BrandWall from "@/components/BrandWall";
@@ -66,11 +64,5 @@ function PageContent() {
 }
 
 export default function Home() {
-  return (
-    <ThemeProvider>
-      <LanguageProvider>
-        <PageContent />
-      </LanguageProvider>
-    </ThemeProvider>
-  );
+  return <PageContent />;
 }

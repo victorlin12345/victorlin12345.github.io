@@ -17,10 +17,14 @@ const LanguageContext = createContext<LanguageContextValue>({
 });
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("zh");
+  const [lang, setLangState] = useState<Lang>(() => {
+    if (typeof window === "undefined") return "zh";
+    return (localStorage.getItem("lang") as Lang) || "zh";
+  });
 
   const setLang = useCallback((l: Lang) => {
     setLangState(l);
+    localStorage.setItem("lang", l);
   }, []);
 
   const t = useCallback(

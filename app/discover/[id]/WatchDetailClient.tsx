@@ -1,8 +1,7 @@
 "use client";
 
 import { notFound } from "next/navigation";
-import { LanguageProvider, useLanguage } from "@/contexts/LanguageContext";
-import { ThemeProvider } from "@/contexts/ThemeContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import Navbar from "@/components/Navbar";
 import WatchDetailPage from "@/components/WatchDetailPage";
 import BookingModal from "@/components/BookingModal";
@@ -45,11 +44,5 @@ function PageContent({ id }: { id: string }) {
 }
 
 export default function WatchDetailClient({ id }: { id: string }) {
-  return (
-    <ThemeProvider>
-      <LanguageProvider>
-        <PageContent id={id} />
-      </LanguageProvider>
-    </ThemeProvider>
-  );
+  return <PageContent id={id} />;
 }

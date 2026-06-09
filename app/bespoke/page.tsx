@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { LanguageProvider, useLanguage } from "@/contexts/LanguageContext";
-import { ThemeProvider } from "@/contexts/ThemeContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import Navbar from "@/components/Navbar";
 import BespokePage from "@/components/BespokePage";
 import BookingModal from "@/components/BookingModal";
@@ -42,11 +41,5 @@ function PageContent() {
 }
 
 export default function Bespoke() {
-  return (
-    <ThemeProvider>
-      <LanguageProvider>
-        <PageContent />
-      </LanguageProvider>
-    </ThemeProvider>
-  );
+  return <PageContent />;
 }

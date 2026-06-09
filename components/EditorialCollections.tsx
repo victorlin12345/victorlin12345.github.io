@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const COLLECTIONS = [
@@ -47,19 +48,20 @@ export default function EditorialCollections() {
               {t("editorial.title")}
             </h2>
           </div>
-          <a
-            href="#"
+          <Link
+            href="/collections#watches"
             className="text-[#8E8E93] hover:text-white text-[10px] tracking-[0.25em] uppercase transition-colors duration-300 border-b border-[#2C2C2E] hover:border-white/40 pb-1 self-start md:self-auto"
           >
             {t("editorial.viewAll")}
-          </a>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#2C2C2E]">
           {COLLECTIONS.map((col) => (
-            <article
+            <Link
               key={col.titleKey}
-              className="group relative overflow-hidden cursor-pointer bg-[#161616]"
+              href="/collections#watches"
+              className="group relative overflow-hidden cursor-pointer bg-[#161616] block"
             >
               <div
                 className="relative aspect-[3/4] overflow-hidden"
@@ -131,7 +133,7 @@ export default function EditorialCollections() {
                   </span>
                 </div>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </div>

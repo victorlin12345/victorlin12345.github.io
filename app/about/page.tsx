@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { LanguageProvider } from "@/contexts/LanguageContext";
-import { ThemeProvider } from "@/contexts/ThemeContext";
 import Navbar from "@/components/Navbar";
 import AboutPage from "@/components/AboutPage";
 import BookingModal from "@/components/BookingModal";
@@ -48,11 +46,5 @@ function PageContent() {
 }
 
 export default function About() {
-  return (
-    <ThemeProvider>
-      <LanguageProvider>
-        <PageContent />
-      </LanguageProvider>
-    </ThemeProvider>
-  );
+  return <PageContent />;
 }
