@@ -4,7 +4,29 @@
       "Bash(mv /Users/victorlin/Documents/project/paoyee/plan.md /tmp/plan.md)",
       "Bash(npx create-next-app@latest /Users/victorlin/Documents/project/paoyee --typescript --tailwind --eslint --app --no-src-dir --import-alias \"@/*\" --yes)",
       "Bash(mv /tmp/plan.md /Users/victorlin/Documents/project/paoyee/plan.md)",
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(npx playwright *)",
+      "Bash(node -e \"require\\('playwright'\\)\")",
+      "Read(//private/tmp/**)",
+      "Bash(npx --yes playwright install chromium --with-deps)",
+      "Bash(grep -c 'Inquire for Price\\\\|NT\\\\$ ' /tmp/paoyee-html.html)",
+      "Bash(node -e ' *)",
+      "Bash(npx --yes playwright@1.60.0 --version)",
+      "Bash(PLAYWRIGHT_BROWSERS_PATH=/tmp/pw-browsers npx playwright install chromium)",
+      "Bash(node *)",
+      "Bash(identify /Users/victorlin/Documents/project/paoyee/public/logo.png)",
+      "Bash(python3 -c ' *)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(npx tsc *)",
+      "Bash(echo \"PID=$!\")",
+      "Bash(curl -sf http://localhost:3737 -o /dev/null -w \"%{http_code}\")",
+      "Bash(npx playwright@latest install chromium --with-deps)",
+      "Bash(curl *)",
+      "Bash(echo \"PID: $!\")",
+      "Bash(chromium-cli http://localhost:3000/about screenshot /tmp/about-top.png --window-size=1440,900)"
     ]
   }
 }

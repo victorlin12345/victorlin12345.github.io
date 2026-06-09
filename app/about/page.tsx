@@ -2,35 +2,19 @@
 
 import { useState } from "react";
 import { LanguageProvider } from "@/contexts/LanguageContext";
-import { useLanguage } from "@/contexts/LanguageContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
-import BrandWall from "@/components/BrandWall";
-import EditorialCollections from "@/components/EditorialCollections";
-import ProductShowcase from "@/components/ProductShowcase";
-import TrustSection from "@/components/TrustSection";
+import AboutPage from "@/components/AboutPage";
 import BookingModal from "@/components/BookingModal";
 
 function PageContent() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedWatch, setSelectedWatch] = useState("");
-  const { t } = useLanguage();
-
-  const openModal = (watch = "") => {
-    setSelectedWatch(watch);
-    setModalOpen(true);
-  };
 
   return (
     <>
-      <Navbar onBooking={() => openModal()} />
+      <Navbar onBooking={() => setModalOpen(true)} />
       <main>
-        <HeroSection />
-        <BrandWall />
-        <EditorialCollections />
-        <ProductShowcase onInquire={(watch) => openModal(watch)} />
-        <TrustSection onBooking={() => openModal()} />
+        <AboutPage />
       </main>
       <footer className="border-t border-[#2C2C2E] py-12 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
@@ -39,33 +23,31 @@ function PageContent() {
             <span className="text-[#2E5CB8]/60 text-[9px] tracking-[0.25em] uppercase">SINCE 1956</span>
           </div>
           <p className="text-[#8E8E93] text-xs tracking-wider text-center">
-            {t("footer.copy")}
+            © 2026 PAOYEE. All timepieces subject to prior sale. Prices in NTD.
           </p>
           <div className="flex gap-8">
-            {(["footer.privacy", "footer.terms", "footer.contact"] as const).map(
-              (key) => (
-                <a
-                  key={key}
-                  href="#"
-                  className="text-[#8E8E93] hover:text-white text-xs tracking-[0.15em] transition-colors duration-300"
-                >
-                  {t(key)}
-                </a>
-              )
-            )}
+            {["PRIVACY", "TERMS", "CONTACT"].map((label) => (
+              <a
+                key={label}
+                href="#"
+                className="text-[#8E8E93] hover:text-white text-xs tracking-[0.15em] transition-colors duration-300"
+              >
+                {label}
+              </a>
+            ))}
           </div>
         </div>
       </footer>
       <BookingModal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
-        preselectedWatch={selectedWatch}
+        preselectedWatch=""
       />
     </>
   );
 }
 
-export default function Home() {
+export default function About() {
   return (
     <ThemeProvider>
       <LanguageProvider>

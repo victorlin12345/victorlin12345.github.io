@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Outer circle -->
+  <circle cx="50" cy="50" r="45" fill="none" stroke="white" stroke-width="3"/>
+
+  <!-- Horizontal diameter -->
+  <line x1="5" y1="50" x2="95" y2="50" stroke="white" stroke-width="3"/>
+
+  <!-- X: two diagonal lines at 45°, endpoints on the circle -->
+  <line x1="18" y1="18" x2="82" y2="82" stroke="white" stroke-width="3"/>
+  <line x1="82" y1="18" x2="18" y2="82" stroke="white" stroke-width="3"/>
+
+  <!-- Upper semicircle: arc from top-left to top-right X endpoints, bowing upward -->
+  <path d="M 18 18 A 45 45 0 0 0 82 18" fill="none" stroke="white" stroke-width="3"/>
+
+  <!-- Lower semicircle: arc from bottom-left to bottom-right X endpoints, bowing downward -->
+  <path d="M 18 82 A 45 45 0 0 1 82 82" fill="none" stroke="white" stroke-width="3"/>
+</svg>

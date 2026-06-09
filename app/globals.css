@@ -1,26 +1,154 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-pitch-black: #0B0B0B;
+  --color-charcoal: #161616;
+  --color-matte: #1F1F1F;
+  --color-silver: #8E8E93;
+  --color-brand-blue: #1C4399;
+  --color-brand-blue-light: #2E5CB8;
+  --color-platinum: #F5F5F7;
+  --color-border: #2C2C2E;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* === Theme variables === */
+:root,
+[data-theme="dark"] {
+  --c-bg: #0B0B0B;
+  --c-card: #161616;
+  --c-modal: #0D0D0D;
+  --c-grid: #2C2C2E;
+  --c-text: #ffffff;
+  --c-muted: #8E8E93;
+  --c-border: #2C2C2E;
+  --c-hero-gradient: radial-gradient(ellipse 80% 60% at 50% 50%, #101A2E 0%, #0C1018 40%, #0B0B0B 100%);
+  --c-trust-gradient: radial-gradient(ellipse at 40% 35%, #0D1A35 0%, #080E1C 50%, #050810 100%);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+[data-theme="light"] {
+  --c-bg: #F0EFE8;
+  --c-card: #E8E7E0;
+  --c-modal: #EDECE5;
+  --c-grid: #CECDC6;
+  --c-text: #1a1a1a;
+  --c-muted: #6E6E73;
+  --c-border: #CECDC6;
+  --c-hero-gradient: radial-gradient(ellipse 80% 60% at 50% 50%, #DDE4F0 0%, #E5EBF5 40%, #F0EFE8 100%);
+  --c-trust-gradient: radial-gradient(ellipse at 40% 35%, #D8E0EC 0%, #DDE5EF 50%, #E8E7E0 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--c-bg);
+  color: var(--c-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* During theme switch: apply transition to all elements */
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
+  transition:
+    background-color 0.6s ease,
+    color 0.6s ease,
+    border-color 0.6s ease !important;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes float-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float-in {
+  animation: float-in 0.8s ease-out forwards;
+}
+
+/* =============================================
+   Light mode overrides
+   ============================================= */
+
+/* -- Backgrounds -- */
+[data-theme="light"] .bg-\[\#0B0B0B\] { background-color: var(--c-bg); }
+[data-theme="light"] .bg-\[\#161616\] { background-color: var(--c-card); }
+[data-theme="light"] .bg-\[\#0D0D0D\] { background-color: var(--c-modal); }
+[data-theme="light"] .bg-\[\#2C2C2E\]  { background-color: var(--c-grid); }
+[data-theme="light"] .bg-black\/55  { background-color: rgba(240, 239, 232, 0.85); }
+[data-theme="light"] .bg-black\/80  { background-color: rgba(240, 239, 232, 0.92); }
+[data-theme="light"] .bg-black\/95  { background-color: rgba(240, 239, 232, 0.98); }
+[data-theme="light"] .bg-black\/30  { background-color: rgba(0, 0, 0, 0.04); }
+
+/* -- Text white → near-black -- */
+[data-theme="light"] .text-white     { color: #1a1a1a; }
+[data-theme="light"] .text-white\/90 { color: rgb(26 26 26 / 90%); }
+[data-theme="light"] .text-white\/80 { color: rgb(26 26 26 / 80%); }
+[data-theme="light"] .text-white\/70 { color: rgb(26 26 26 / 70%); }
+[data-theme="light"] .text-white\/60 { color: rgb(26 26 26 / 60%); }
+[data-theme="light"] .text-white\/50 { color: rgb(26 26 26 / 50%); }
+[data-theme="light"] .text-white\/40 { color: rgb(26 26 26 / 40%); }
+[data-theme="light"] .text-white\/35 { color: rgb(26 26 26 / 35%); }
+[data-theme="light"] .text-white\/30 { color: rgb(26 26 26 / 30%); }
+[data-theme="light"] .text-white\/25 { color: rgb(26 26 26 / 25%); }
+[data-theme="light"] .text-white\/20 { color: rgb(26 26 26 / 20%); }
+[data-theme="light"] .text-white\/15 { color: rgb(26 26 26 / 15%); }
+[data-theme="light"] .text-white\/10 { color: rgb(26 26 26 / 10%); }
+
+/* White text on blue button should stay white */
+[data-theme="light"] .bg-\[\#1C4399\].text-white { color: #ffffff; }
+
+/* Muted silver text */
+[data-theme="light"] .text-\[\#8E8E93\] { color: var(--c-muted); }
+
+/* Separator dot in brand wall */
+[data-theme="light"] .text-\[\#2C2C2E\] { color: var(--c-border); }
+
+/* -- Hover text -- */
+[data-theme="light"] .hover\:text-white:hover     { color: #0B0B0B; }
+[data-theme="light"] .hover\:text-white\/60:hover { color: rgb(11 11 11 / 60%); }
+[data-theme="light"] .hover\:text-white\/70:hover { color: rgb(11 11 11 / 70%); }
+[data-theme="light"] .hover\:text-white\/80:hover { color: rgb(11 11 11 / 80%); }
+[data-theme="light"] .hover\:text-white\/90:hover { color: rgb(11 11 11 / 90%); }
+
+/* group-hover */
+[data-theme="light"] .group:hover .group-hover\:text-white\/80 { color: rgb(26 26 26 / 80%); }
+[data-theme="light"] .group:hover .group-hover\:text-white\/90 { color: rgb(26 26 26 / 90%); }
+
+/* -- Borders -- */
+[data-theme="light"] .border-\[\#2C2C2E\]         { border-color: var(--c-border); }
+[data-theme="light"] .border-white\/\[0\.06\]     { border-color: rgb(26 26 26 / 6%); }
+[data-theme="light"] .border-white\/10            { border-color: rgb(26 26 26 / 10%); }
+[data-theme="light"] .border-white\/15            { border-color: rgb(26 26 26 / 15%); }
+[data-theme="light"] .border-white\/30            { border-color: rgb(26 26 26 / 30%); }
+[data-theme="light"] .border-white\/40            { border-color: rgb(26 26 26 / 40%); }
+[data-theme="light"] .hover\:border-white\/30:hover { border-color: rgb(11 11 11 / 30%); }
+[data-theme="light"] .hover\:border-white\/40:hover { border-color: rgb(11 11 11 / 40%); }
+
+/* -- CTA button: fill dark on hover instead of white -- */
+[data-theme="light"] .hover\:bg-white:hover  { background-color: #1a1a1a; }
+[data-theme="light"] .hover\:text-black:hover { color: #ffffff; }
+
+/* -- Misc backgrounds -- */
+[data-theme="light"] .bg-white    { background-color: #1a1a1a; }
+[data-theme="light"] .bg-white\/15 { background-color: rgb(26 26 26 / 15%); }
